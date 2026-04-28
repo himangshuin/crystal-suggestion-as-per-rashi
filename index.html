@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="description" content="Discover your perfect crystal based on your Rashi (Zodiac Sign). Ancient astrological gemstone recommendations with healing benefits.">
+  <meta name="keywords" content="crystal healing, zodiac stones, rashi ratna, gemstone recommendations, astrology crystals">
+  <meta name="author" content="Himangshu">
+  <meta property="og:title" content="Crystal Compass | Zodiac Gemstone Guide">
+  <meta property="og:description" content="Find your ideal crystals as per your sun sign. Healing benefits and modern design.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>Crystal Compass | Rashi-Based Gemstone Guide</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Ambient background orbs -->
+  <div class="bg-orb orb-1"></div>
+  <div class="bg-orb orb-2"></div>
+  <div class="bg-orb orb-3"></div>
+  <div class="noise-overlay"></div>
+
+  <div class="container">
+
+    <!-- Header -->
+    <header class="site-header">
+      <div class="header-left">
+        <div class="logo-mark">✦</div>
+        <div class="logo-text">
+          <h1>Crystal Compass</h1>
+          <p>rashi gemology · vibrational astrology</p>
+        </div>
+      </div>
+      <div class="header-right">
+        <span class="pill">ancestral wisdom · modern healing</span>
+      </div>
+    </header>
+
+    <!-- Sign selector label -->
+    <div class="section-heading">
+      <span class="section-line"></span>
+      <span class="section-text">choose your sun sign</span>
+      <span class="section-line"></span>
+    </div>
+
+    <!-- Zodiac Grid -->
+    <div class="zodiac-grid" id="zodiacGrid"></div>
+
+    <!-- Crystal Panel -->
+    <div class="crystal-panel" id="crystalPanel">
+      <div class="panel-header" id="panelHeader">
+        <div class="panel-title-area">
+          <span class="panel-glyph" id="panelGlyph">✦</span>
+          <h2 class="panel-sign-name" id="activeSignName">Aries</h2>
+        </div>
+        <div class="panel-meta" id="panelMeta">sacred gemstones · tap a stone to explore</div>
+      </div>
+
+      <div class="crystals-grid" id="crystalsContainer"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p class="footer-note">Each stone carries affiliate shopping links · align with your cosmic energy</p>
+        <p class="footer-credit">crafted by <strong>Himangshu</strong> · © 2025 Crystal Compass</p>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
