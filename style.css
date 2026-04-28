@@ -1,0 +1,616 @@
+/* ============================================================
+   Crystal Compass — style.css
+   Aesthetic: Dark luxury editorial / Art Nouveau mysticism
+   ============================================================ */
+
+/* ── Custom Properties ─────────────────────────────────────── */
+:root {
+  --bg:         #0b0a10;
+  --bg-card:    #12101a;
+  --bg-glass:   rgba(255,255,255,0.035);
+  --bg-glass-h: rgba(255,255,255,0.065);
+
+  --gold:       #c9a96e;
+  --gold-light: #e2c992;
+  --gold-dim:   #7d6440;
+
+  --cream:      #f0e8d5;
+  --cream-dim:  #9e9080;
+
+  --accent:     #8b6ab8;
+  --accent-dim: #3d2d5a;
+
+  --border:     rgba(201,169,110,0.18);
+  --border-h:   rgba(201,169,110,0.45);
+
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'DM Sans', system-ui, sans-serif;
+
+  --radius-sm:  10px;
+  --radius-md:  18px;
+  --radius-lg:  28px;
+  --radius-xl:  40px;
+
+  --shadow-glow: 0 0 40px rgba(201,169,110,0.08);
+  --shadow-card: 0 24px 48px rgba(0,0,0,0.5);
+  --transition:  all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* ── Reset ─────────────────────────────────────────────────── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ── Base ──────────────────────────────────────────────────── */
+body {
+  background: var(--bg);
+  font-family: var(--font-body);
+  color: var(--cream);
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ── Ambient Orbs ──────────────────────────────────────────── */
+.bg-orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(90px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.35;
+}
+
+.orb-1 {
+  width: 600px;
+  height: 600px;
+  top: -150px;
+  left: -200px;
+  background: radial-gradient(circle, #2a1a4a 0%, transparent 70%);
+}
+
+.orb-2 {
+  width: 500px;
+  height: 500px;
+  bottom: 10%;
+  right: -150px;
+  background: radial-gradient(circle, #1a0e2a 0%, transparent 70%);
+  opacity: 0.25;
+}
+
+.orb-3 {
+  width: 400px;
+  height: 400px;
+  top: 40%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: radial-gradient(circle, #7d640030 0%, transparent 70%);
+  opacity: 0.2;
+}
+
+/* Grain texture overlay */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  background-size: 128px 128px;
+}
+
+/* ── Custom Scrollbar ──────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--gold-dim);
+  border-radius: 4px;
+}
+
+/* ── Container ─────────────────────────────────────────────── */
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 1380px;
+  margin: 0 auto;
+  padding: 2rem 2.5rem 4rem;
+}
+
+/* ── Header ────────────────────────────────────────────────── */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1.5rem 0 2.5rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 3rem;
+  animation: fadeDown 0.8s ease both;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo-mark {
+  font-size: 2.4rem;
+  color: var(--gold);
+  line-height: 1;
+  animation: spinSlow 12s linear infinite;
+  display: inline-block;
+}
+
+.logo-text h1 {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: var(--gold-light);
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
+
+.logo-text p {
+  font-size: 0.72rem;
+  color: var(--gold-dim);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+.pill {
+  display: inline-block;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 0.45rem 1.2rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cream-dim);
+  background: var(--bg-glass);
+  backdrop-filter: blur(8px);
+}
+
+/* ── Section Heading ───────────────────────────────────────── */
+.section-heading {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin-bottom: 1.8rem;
+  animation: fadeUp 0.7s 0.2s ease both;
+}
+
+.section-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--border), transparent);
+}
+
+.section-text {
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  white-space: nowrap;
+}
+
+/* ── Zodiac Grid ───────────────────────────────────────────── */
+.zodiac-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 3rem;
+  animation: fadeUp 0.7s 0.3s ease both;
+}
+
+.zodiac-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 1.1rem 0.5rem;
+  background: var(--bg-glass);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+}
+
+.zodiac-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(201,169,110,0.06), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.zodiac-card:hover::before { opacity: 1; }
+
+.zodiac-card:hover {
+  border-color: var(--border-h);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px rgba(0,0,0,0.4), 0 0 0 1px rgba(201,169,110,0.1);
+}
+
+.zodiac-card.active {
+  background: linear-gradient(145deg, #1e1428, #261b38);
+  border-color: var(--gold);
+  box-shadow: 0 0 0 1px var(--gold-dim), 0 16px 40px rgba(0,0,0,0.5), var(--shadow-glow);
+}
+
+.zodiac-glyph {
+  font-size: 1.6rem;
+  line-height: 1;
+  transition: transform 0.3s;
+}
+
+.zodiac-card:hover .zodiac-glyph {
+  transform: scale(1.15);
+}
+
+.zodiac-card.active .zodiac-glyph {
+  filter: drop-shadow(0 0 8px rgba(201,169,110,0.5));
+}
+
+.zodiac-name {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: var(--cream-dim);
+  transition: color 0.3s;
+}
+
+.zodiac-card:hover .zodiac-name,
+.zodiac-card.active .zodiac-name {
+  color: var(--gold-light);
+}
+
+.zodiac-card.active .zodiac-name {
+  font-weight: 600;
+}
+
+/* ── Crystal Panel ─────────────────────────────────────────── */
+.crystal-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  box-shadow: var(--shadow-card);
+  animation: fadeUp 0.7s 0.4s ease both;
+  min-height: 300px;
+}
+
+.panel-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-bottom: 2rem;
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.panel-title-area {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.panel-glyph {
+  font-size: 1.8rem;
+  color: var(--gold);
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+.panel-sign-name {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 300;
+  color: var(--cream);
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+
+.panel-meta {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  padding-top: 0.5rem;
+}
+
+/* ── Crystals Grid ─────────────────────────────────────────── */
+.crystals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+/* ── Crystal Card ──────────────────────────────────────────── */
+.crystal-card {
+  background: var(--bg-glass);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: var(--transition);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  animation: fadeUp 0.5s ease both;
+}
+
+.crystal-card:hover {
+  border-color: var(--border-h);
+  transform: translateY(-6px);
+  box-shadow: 0 24px 48px rgba(0,0,0,0.5), 0 0 0 1px rgba(201,169,110,0.08);
+}
+
+/* Stagger children animation */
+.crystal-card:nth-child(1) { animation-delay: 0.05s; }
+.crystal-card:nth-child(2) { animation-delay: 0.1s; }
+.crystal-card:nth-child(3) { animation-delay: 0.15s; }
+.crystal-card:nth-child(4) { animation-delay: 0.2s; }
+.crystal-card:nth-child(5) { animation-delay: 0.25s; }
+.crystal-card:nth-child(6) { animation-delay: 0.3s; }
+.crystal-card:nth-child(7) { animation-delay: 0.35s; }
+
+.crystal-visual {
+  background: linear-gradient(160deg, #1c1428 0%, #0f0b18 100%);
+  padding: 2.2rem 1rem 1.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.crystal-visual::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 80%, rgba(201,169,110,0.07) 0%, transparent 65%);
+}
+
+.crystal-emoji {
+  font-size: 2.8rem;
+  filter: drop-shadow(0 4px 16px rgba(201,169,110,0.3));
+  display: block;
+  position: relative;
+  z-index: 1;
+  animation: floatGem 4s ease-in-out infinite;
+}
+
+.crystal-card:nth-child(even) .crystal-emoji {
+  animation-delay: -2s;
+}
+
+.crystal-name {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 600;
+  color: var(--gold-light);
+  text-align: center;
+  padding: 1rem 1.2rem 0.6rem;
+  letter-spacing: 0.02em;
+}
+
+/* ── Benefits ──────────────────────────────────────────────── */
+.benefits {
+  padding: 0.5rem 1.2rem 1rem;
+  flex: 1;
+}
+
+.benefits-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: 0.6rem;
+  display: block;
+}
+
+.benefits-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.benefits-list li {
+  font-size: 0.82rem;
+  color: var(--cream-dim);
+  padding-left: 1.2rem;
+  position: relative;
+  line-height: 1.45;
+}
+
+.benefits-list li::before {
+  content: '◈';
+  position: absolute;
+  left: 0;
+  color: var(--gold-dim);
+  font-size: 0.65rem;
+  top: 2px;
+}
+
+/* ── Buy Link ──────────────────────────────────────────────── */
+.buy-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0.9rem 1rem;
+  background: linear-gradient(135deg, #1a1128, #221535);
+  border-top: 1px solid var(--border);
+  text-decoration: none;
+  color: var(--gold);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: var(--transition);
+  margin-top: auto;
+}
+
+.buy-link:hover {
+  background: linear-gradient(135deg, #2a1a45, #331e50);
+  color: var(--gold-light);
+  letter-spacing: 0.14em;
+}
+
+.buy-link svg {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+/* ── Empty State ───────────────────────────────────────────── */
+.empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--gold-dim);
+}
+
+.empty-state p {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 300;
+  font-style: italic;
+  margin-top: 1rem;
+}
+
+/* ── Footer ────────────────────────────────────────────────── */
+.site-footer {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+  animation: fadeUp 0.7s 0.5s ease both;
+}
+
+.footer-inner {
+  text-align: center;
+}
+
+.footer-note {
+  font-size: 0.72rem;
+  color: var(--cream-dim);
+  letter-spacing: 0.06em;
+  opacity: 0.6;
+}
+
+.footer-credit {
+  margin-top: 0.6rem;
+  font-size: 0.72rem;
+  color: var(--gold-dim);
+  letter-spacing: 0.08em;
+}
+
+.footer-credit strong {
+  color: var(--gold);
+  font-weight: 500;
+}
+
+/* ── Animations ────────────────────────────────────────────── */
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 1; text-shadow: 0 0 12px rgba(201,169,110,0.4); }
+  50%       { opacity: 0.6; text-shadow: none; }
+}
+
+@keyframes floatGem {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+
+/* ── Panel transition ──────────────────────────────────────── */
+.crystals-grid.updating {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.crystals-grid.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.28s ease, transform 0.28s ease;
+}
+
+/* ── Responsive ────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .container {
+    padding: 1.5rem 1.5rem 3rem;
+  }
+  .zodiac-grid {
+    grid-template-columns: repeat(auto-fill, minmax(78px, 1fr));
+    gap: 0.6rem;
+  }
+  .crystal-panel {
+    padding: 1.8rem 1.2rem;
+  }
+  .panel-sign-name {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 1.2rem 1rem 2.5rem;
+  }
+  .logo-text h1 {
+    font-size: 1.7rem;
+  }
+  .site-header {
+    padding-bottom: 1.8rem;
+    margin-bottom: 2rem;
+  }
+  .zodiac-card {
+    padding: 0.9rem 0.4rem;
+  }
+  .zodiac-glyph {
+    font-size: 1.3rem;
+  }
+  .zodiac-name {
+    font-size: 0.72rem;
+  }
+  .crystal-panel {
+    padding: 1.4rem 1rem;
+  }
+  .panel-sign-name {
+    font-size: 1.9rem;
+  }
+  .crystals-grid {
+    grid-template-columns: 1fr;
+  }
+  .header-right {
+    display: none;
+  }
+}
