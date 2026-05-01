@@ -73,6 +73,35 @@
     </footer>
 
   </div>
+<!-- Floating WhatsApp Share Button -->
+<a href="#" id="whatsappShareBtn" class="whatsapp-share-btn">
+  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="white" viewBox="0 0 24 24">
+    <path d="M20.52 3.48A11.86 11.86 0 0 0 12.06 0C5.5 0 .16 5.34.16 11.9c0 2.1.55 4.15 1.6 5.96L0 24l6.33-1.66a11.8 11.8 0 0 0 5.73 1.46h.01c6.56 0 11.9-5.34 11.9-11.9 0-3.18-1.24-6.16-3.45-8.42z"/>
+  </svg>
+</a>
 
+<!-- Main App Script -->
+<script src="app.js"></script>
+
+<!-- WhatsApp Share Script -->
+<script>
+document.getElementById('whatsappShareBtn').addEventListener('click', function(e){
+  e.preventDefault();
+
+  const shareText =
+`✨ Check out Crystal Compass — Rashi-Based Gemstone Guide
+
+🔮 Discover your ideal healing crystals
+💎 Zodiac gemstone recommendations
+
+Explore here:
+${window.location.href}`;
+
+  const whatsappURL =
+    "https://wa.me/?text=" + encodeURIComponent(shareText);
+
+  window.open(whatsappURL, '_blank');
+});
+</script>
 </body>
 </html>
