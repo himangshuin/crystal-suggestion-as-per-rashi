@@ -74,6 +74,24 @@
 
   </div>
 
-  <script src="app.js"></script>
+  <script src="app.js"></script> <script>
+document.getElementById('whatsappShareBtn').addEventListener('click', function(e){
+  e.preventDefault();
+
+  const shareText =
+`✨ Check out this Free Name Analysis & Lucky Colour Calculator
+
+Discover:
+🔮 Name Vibration
+🎨 Lucky Colours
+Try it here:
+${window.location.href}`;
+
+  const whatsappURL =
+    "https://wa.me/?text=" + encodeURIComponent(shareText);
+
+  window.open(whatsappURL, '_blank');
+});
+</script>
 </body>
 </html>
